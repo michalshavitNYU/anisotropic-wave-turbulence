@@ -25,8 +25,8 @@ end
 function integrandA3D_kaz(kaz, kbz, u, v )
         rhoA = sqrt(1-kaz.^2);
         a2Dsqrt = 4*(u+v).^2*(u-v).^2 - (2*u^2 + 2*v^2 - 1).^2;
-        a3Dsqrt = 4*(rhoA.^2 * (u+v).^2 + kbz.^2)*(rhoA.^2 * (u-v).^2 + (kaz+kbz).^2) - 
-        (rhoA.^2*(2*u^2+2*v^2-1) + kbz.^2 + (kaz+kbz).^2).^2;
+        a3Dsqrt = 4*(rhoA.^2 * (u+v).^2 + kbz.^2)*(rhoA.^2 * (u-v).^2 + (kaz+kbz).^2) -
+        (rhoA.^2*(2*u^2+2*v^2-1) - kaz.^2 + kbz.^2 + (kaz+kbz).^2).^2;
 
         
         if a2Dsqrt>0 && a3Dsqrt> 0
@@ -231,8 +231,8 @@ function a2Dsqrt(u,v)
 end
 
 function a3Dsqrt(rhoA, kaz, kbz, u, v)
-        4*(rhoA .^2 * (u+v) .^2 + kbz.^2)*(rhoA .^2 * (u-v) .^2 + (kaz+kbz) .^2) - 
-        (rhoA .^2*(2*u^2+2*v^2-1) + kbz .^2 + (kaz+kbz) .^2).^2;
+        4*(rhoA .^2 * (u+v) .^2 + kbz.^2)*(rhoA .^2 * (u-v) .^2 + (kaz+kbz) .^2) -
+        (rhoA .^2*(2*u^2+2*v^2-1) - kaz .^2 + kbz .^2 + (kaz+kbz) .^2).^2;
 end
 
 
