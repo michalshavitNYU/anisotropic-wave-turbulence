@@ -1,3 +1,8 @@
+# Created by Shahaf Aharony, Weizmann Institute of Science.
+# Computes the areas of triangles formed by wave-vector triads p+q+k=0:
+# the true 3D area (A3D) and the area of the projection onto the horizontal
+# plane (A2D), and their averaged ratios over triad configurations.
+
 using DrWatson
 @quickactivate "oddWaves"
 using InteractiveUtils, DataFrames, CSV, Statistics, Roots
