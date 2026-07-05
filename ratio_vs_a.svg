@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320">
+<rect x="62" y="16" width="402" height="258" fill="none" stroke="#999" stroke-width="1"/>
+<line x1="62" y1="274.0" x2="464" y2="274.0" stroke="#eee"/>
+<text x="56.0" y="278.0" font-family="sans-serif" font-size="11" text-anchor="end" fill="#222">1.2</text>
+<line x1="62" y1="237.1" x2="464" y2="237.1" stroke="#eee"/>
+<text x="56.0" y="241.1" font-family="sans-serif" font-size="11" text-anchor="end" fill="#222">1.4</text>
+<line x1="62" y1="200.3" x2="464" y2="200.3" stroke="#eee"/>
+<text x="56.0" y="204.3" font-family="sans-serif" font-size="11" text-anchor="end" fill="#222">1.6</text>
+<line x1="62" y1="163.4" x2="464" y2="163.4" stroke="#eee"/>
+<text x="56.0" y="167.4" font-family="sans-serif" font-size="11" text-anchor="end" fill="#222">1.8</text>
+<line x1="62" y1="126.6" x2="464" y2="126.6" stroke="#eee"/>
+<text x="56.0" y="130.6" font-family="sans-serif" font-size="11" text-anchor="end" fill="#222">2.0</text>
+<line x1="62" y1="89.7" x2="464" y2="89.7" stroke="#eee"/>
+<text x="56.0" y="93.7" font-family="sans-serif" font-size="11" text-anchor="end" fill="#222">2.2</text>
+<line x1="62" y1="52.9" x2="464" y2="52.9" stroke="#eee"/>
+<text x="56.0" y="56.9" font-family="sans-serif" font-size="11" text-anchor="end" fill="#222">2.4</text>
+<line x1="62" y1="16.0" x2="464" y2="16.0" stroke="#eee"/>
+<text x="56.0" y="20.0" font-family="sans-serif" font-size="11" text-anchor="end" fill="#222">2.6</text>
+<text x="62.0" y="290.0" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#222">0.0</text>
+<text x="142.4" y="290.0" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#222">0.1</text>
+<text x="222.8" y="290.0" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#222">0.2</text>
+<text x="303.2" y="290.0" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#222">0.3</text>
+<text x="383.6" y="290.0" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#222">0.4</text>
+<text x="464.0" y="290.0" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#222">0.5</text>
+<polyline points="62.0,126.6 464.0,126.6" fill="none" stroke="#888780" stroke-width="2" stroke-dasharray="2,3"/>
+<polyline points="62.0,40.4 102.2,51.5 142.4,62.8 182.6,74.4 222.8,86.3 263.0,98.5 303.2,111.0 343.4,123.9 383.6,137.1 423.8,150.6 464.0,164.4" fill="none" stroke="#D85A30" stroke-width="2" stroke-dasharray="6,4"/>
+<circle cx="62.0" cy="40.4" r="2.6" fill="#D85A30"/><circle cx="102.2" cy="51.5" r="2.6" fill="#D85A30"/><circle cx="142.4" cy="62.8" r="2.6" fill="#D85A30"/><circle cx="182.6" cy="74.4" r="2.6" fill="#D85A30"/><circle cx="222.8" cy="86.3" r="2.6" fill="#D85A30"/><circle cx="263.0" cy="98.5" r="2.6" fill="#D85A30"/><circle cx="303.2" cy="111.0" r="2.6" fill="#D85A30"/><circle cx="343.4" cy="123.9" r="2.6" fill="#D85A30"/><circle cx="383.6" cy="137.1" r="2.6" fill="#D85A30"/><circle cx="423.8" cy="150.6" r="2.6" fill="#D85A30"/><circle cx="464.0" cy="164.4" r="2.6" fill="#D85A30"/>
+<polyline points="62.0,126.6 102.2,137.4 142.4,148.5 182.6,160.0 222.8,171.9 263.0,184.2 303.2,196.9 343.4,210.1 383.6,223.9 423.8,238.4 464.0,253.5" fill="none" stroke="#378ADD" stroke-width="2"/>
+<circle cx="62.0" cy="126.6" r="2.6" fill="#378ADD"/><circle cx="102.2" cy="137.4" r="2.6" fill="#378ADD"/><circle cx="142.4" cy="148.5" r="2.6" fill="#378ADD"/><circle cx="182.6" cy="160.0" r="2.6" fill="#378ADD"/><circle cx="222.8" cy="171.9" r="2.6" fill="#378ADD"/><circle cx="263.0" cy="184.2" r="2.6" fill="#378ADD"/><circle cx="303.2" cy="196.9" r="2.6" fill="#378ADD"/><circle cx="343.4" cy="210.1" r="2.6" fill="#378ADD"/><circle cx="383.6" cy="223.9" r="2.6" fill="#378ADD"/><circle cx="423.8" cy="238.4" r="2.6" fill="#378ADD"/><circle cx="464.0" cy="253.5" r="2.6" fill="#378ADD"/>
+<text x="240.0" y="314.0" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#222">anisotropy exponent  a   (e = k^-3+a |k_z|^-a)</text>
+<text x="16" y="160" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#222" transform="rotate(-90 16 160)">⟨A3D⟩ / ⟨A2D⟩</text>
+<text x="287.1" y="170.2" font-family="sans-serif" font-size="11" text-anchor="start" fill="#378ADD">ratio of averages</text>
+<text x="303.2" y="98.5" font-family="sans-serif" font-size="11" text-anchor="start" fill="#D85A30">average of ratio</text>
+</svg>
