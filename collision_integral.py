@@ -23,10 +23,25 @@ CHANGES SIGN (e.g. k_az=0.05: -121 -> -57 -> -15 -> +17). The large-|k_beta|,|k_
 Consequence: raw St_alpha (and hence a raw St_exact/St_approx comparison) is NOT a
 well-defined convergent observable at finite anisotropy. It must be regularized (the
 paper's h,d) AND the physically meaningful, SATURATING quantity is the radial FLUX
-Pi (the paper's Fig. 3), not the bare collision integral. The area-approximation error
-should therefore be assessed as flux_exact vs flux_approx. Note the entanglement: the
+Pi (the paper's Fig. 3), not the bare collision integral. Note the entanglement: the
 very-anisotropic limit k~rho that makes St saturate is exactly where A3D=A2D (zero
 error), so the error lives in the part that must be regularized.
+
+RESOLUTION (slow-mode regulator eps): the divergence is a slow-mode effect -- at large
+u the resonant root has |k_beta^z| ~ 1/u -> 0. Regularizing |k_z|^{-1/2} ->
+(k_z^2+eps^2)^{-1/4} on all three legs makes each St(eps) converge in the leg-size
+integral. As eps -> 0:
+  * St_exact(eps) and St_approx(eps) both DIVERGE logarithmically (slow modes), but
+  * their DIFFERENCE St_exact - St_approx converges to a finite, eps-independent value
+    (the divergent slow-mode part is common, since A3D=A2D there).
+So the approximation error is a genuine finite quantity (no divergence introduced). The
+error profile St_exact - St_approx (eps-converged) vs k_alpha^z:
+    k_az :  0.10   0.20   0.30   0.50   0.70
+    err  : +1.35  +1.14  +0.59  -0.19  -0.57   (changes sign near k_az ~ 0.45)
+It is O(1): relative to the (divergent) St the error -> 0 only logarithmically, so at
+physical slow-mode cutoffs it is a sizeable fraction of St. Whether it matters for the
+observables (spectrum exponent f, flux) still needs propagation to those; f=1/2 is a
+slow-mode (principal-value) quantity and is expected to be protected.
 
 Created by Shahaf Aharony (Weizmann Institute) and Michal Shavit.
 """
@@ -38,8 +53,9 @@ W, F = 3.0, 0.5
 SA = +1.0                      # alpha-leg chirality (compute St on the + branch)
 
 
-def espec(kz, k):
-    return k ** (-W + F) * abs(kz) ** (-F)
+def espec(kz, k, eps=0.0):
+    # slow-mode regulator: |k_z|^{-F} -> (k_z^2 + eps^2)^{-F/2}
+    return k ** (-W + F) * (kz * kz + eps * eps) ** (-F / 2)
 
 
 def _omega_sum(x, z, rb, rg, sb, sg):
@@ -68,11 +84,14 @@ def _roots(z, rb, rg, sb, sg, Xm, ngrid=400):
     return out
 
 
-def St(z, nt=48, nph=48, Tmax=7.0):
-    """Return (St_exact, St_approx) at k_alpha^z = z, |k_alpha|=1."""
+def St(z, nt=48, nph=48, Tmax=7.0, eps=0.0):
+    """Return (St_exact, St_approx) at k_alpha^z = z, |k_alpha|=1.
+
+    eps > 0 applies a smooth slow-mode regulator to |k_z|^{-1/2} on all three legs.
+    """
     rhoA2 = 1.0 - z * z
     rhoA = np.sqrt(rhoA2)
-    ea = espec(z, 1.0)
+    ea = espec(z, 1.0, eps)
     xt, wt = leggauss(nt); t = 0.5 * Tmax * (xt + 1); wt = 0.5 * Tmax * wt
     xp, wp = leggauss(nph); ph = 0.5 * np.pi * xp; wp = 0.5 * np.pi * wp   # phi in (-pi/2,pi/2)
     Se = Sa = 0.0
@@ -93,7 +112,7 @@ def St(z, nt=48, nph=48, Tmax=7.0):
                         if a3s <= 0:
                             continue
                         A3D = 0.25 * np.sqrt(a3s)
-                        eb = espec(x, kb); eg = espec(kgz, kg)
+                        eb = espec(x, kb, eps); eg = espec(kgz, kg, eps)
                         Sspec = z * eb * eg + x * ea * eg + kgz * ea * eb
                         G2 = (A3D ** 2 / (4 * z * z * kb ** 2 * kg ** 2)
                               * (sb * kb - sg * kg) ** 2 * (SA * 1.0 + sb * kb + sg * kg) ** 2)
