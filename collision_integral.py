@@ -53,9 +53,9 @@ W, F = 3.0, 0.5
 SA = +1.0                      # alpha-leg chirality (compute St on the + branch)
 
 
-def espec(kz, k, eps=0.0):
-    # slow-mode regulator: |k_z|^{-F} -> (k_z^2 + eps^2)^{-F/2}
-    return k ** (-W + F) * (kz * kz + eps * eps) ** (-F / 2)
+def espec(kz, k, eps=0.0, f=F, w=W):
+    # e = k^{-w} |cos theta|^{-f} = k^{-w+f} |k_z|^{-f};  slow-mode regulator on |k_z|^{-f}.
+    return k ** (-w + f) * (kz * kz + eps * eps) ** (-f / 2)
 
 
 def _omega_sum(x, z, rb, rg, sb, sg):
@@ -84,14 +84,19 @@ def _roots(z, rb, rg, sb, sg, Xm, ngrid=400):
     return out
 
 
-def St(z, nt=48, nph=48, Tmax=7.0, eps=0.0):
+def St(z, nt=48, nph=48, Tmax=7.0, eps=0.0, f=F, w=W, branches=None):
     """Return (St_exact, St_approx) at k_alpha^z = z, |k_alpha|=1.
 
-    eps > 0 applies a smooth slow-mode regulator to |k_z|^{-1/2} on all three legs.
+    eps > 0 applies a smooth slow-mode regulator to |k_z|^{-f} on all three legs.
+    f = angular exponent (|cos theta|^{-f}), w = radial exponent.
+    branches = list of (s_beta, s_gamma) pairs to include (s_alpha = SA = +1 fixed).
+      default = all four; positive branch = [(+1.0, +1.0)].
     """
+    if branches is None:
+        branches = [(sb, sg) for sb in (+1.0, -1.0) for sg in (+1.0, -1.0)]
     rhoA2 = 1.0 - z * z
     rhoA = np.sqrt(rhoA2)
-    ea = espec(z, 1.0, eps)
+    ea = espec(z, 1.0, eps, f, w)
     xt, wt = leggauss(nt); t = 0.5 * Tmax * (xt + 1); wt = 0.5 * Tmax * wt
     xp, wp = leggauss(nph); ph = 0.5 * np.pi * xp; wp = 0.5 * np.pi * wp   # phi in (-pi/2,pi/2)
     Se = Sa = 0.0
@@ -104,15 +109,14 @@ def St(z, nt=48, nph=48, Tmax=7.0, eps=0.0):
             meas = 2.0 * rhoA2 ** 2 * (u + v) * (u - v)
             Wij = wt[i] * wp[j]
             Xm = 8.0 + 6.0 * max(rb, rg)
-            for sb in (+1.0, -1.0):
-                for sg in (+1.0, -1.0):
+            for sb, sg in branches:
                     for x in _roots(z, rb, rg, sb, sg, Xm):
                         kb = np.hypot(rb, x); kgz = -(z + x); kg = np.hypot(rg, kgz)
                         a3s = 4 * kb ** 2 * kg ** 2 - (kb ** 2 + kg ** 2 - 1.0) ** 2
                         if a3s <= 0:
                             continue
                         A3D = 0.25 * np.sqrt(a3s)
-                        eb = espec(x, kb, eps); eg = espec(kgz, kg, eps)
+                        eb = espec(x, kb, eps, f, w); eg = espec(kgz, kg, eps, f, w)
                         Sspec = z * eb * eg + x * ea * eg + kgz * ea * eb
                         G2 = (A3D ** 2 / (4 * z * z * kb ** 2 * kg ** 2)
                               * (sb * kb - sg * kg) ** 2 * (SA * 1.0 + sb * kb + sg * kg) ** 2)
