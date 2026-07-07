@@ -1,0 +1,25 @@
+% Main-text paragraph: the A2D ~ A3D approximation.
+We quantify the approximation through the averaged $N$-dimensional triangle area
+\begin{align}
+    \obs{A_{ND}}_{\beta \gamma} &= \int \dd V_\beta \dd V_\gamma \, A_{ND}\, e_\beta e_\gamma\, \delta \leri{\mathbf{k}_\alpha+\mathbf{k}_\beta+\mathbf{k}_\gamma } \,,
+\end{align}
+with $A_{3D} = \frac{1}{4} \sqrt{4 k_\beta^2 k_\gamma^2-\leri{k_\beta^2 +k_\gamma^2 - k_\alpha^2}^2}$ and $A_{2D}$ the area of its projection onto the $k_z=0$ plane [Eq.~\eqref{eq:A2D}]. Using $\mathbf{k}_\alpha+\mathbf{k}_\beta+\mathbf{k}_\gamma=0$ both areas are cross products of a single pair of legs,
+\begin{align}
+    A_{3D}=\tfrac12\abs{\mathbf{k}_\alpha\times\mathbf{k}_\beta}\,, \qquad A_{2D}=\tfrac12\abs{\leri{\mathbf{k}_\alpha\times\mathbf{k}_\beta}_z}\,,
+\end{align}
+so their ratio measures the tilt of the triad plane relative to $\hat z$. The fidelity of the approximation is set by
+\begin{align}
+    R(k_\alpha^z) \equiv \frac{\obs{A_{3D}}_{\beta \gamma}}{\obs{A_{2D}}_{\beta \gamma}} \geq 1\,.
+\end{align}
+
+For the anisotropic spectrum $e_{k}\propto \abs{\cos\theta_k}^{-1/2}$, the weight $e_\beta e_\gamma$ concentrates the partner legs near the slow-mode manifold as well; as $k_\alpha^z\to0$ all three wavevectors become coplanar with the $k_z=0$ plane and the two areas coincide,
+\begin{align}
+    R(k_\alpha^z)\;\xrightarrow[k_\alpha^z\to0]{}\;1\,.
+\end{align}
+The approximation $\obs{A_{2D}}_{\beta \gamma}\sim\obs{A_{3D}}_{\beta \gamma}$ is thus asymptotically exact precisely where the energy accumulates. This is a genuine consequence of the anisotropy: for an isotropic distribution $e_{k}\propto k^{-3}$ the partner legs retain generic inclinations even on the slow manifold, and the same limit yields the finite value
+\begin{align}
+    R(k_\alpha^z)\;\xrightarrow[k_\alpha^z\to0]{}\;\frac{1}{\obs{\abs{\cos\varphi}}}=\frac{\pi}{2}\approx1.57\,,
+\end{align}
+with $\varphi$ the azimuth of the transverse partner momentum.
+
+Averaging finally over the remaining leg, the ratio of the integrated areas $\obs{A_{3D}}/\obs{A_{2D}}$ equals $2$ in the isotropic case---a distribution-independent value fixed by the mean tilt $\obs{\abs{\cos\psi}}=1/2$ of the triad normal---and decreases to $\simeq 1.31$ for the odd-wave spectrum (see~\cite{SM}). The monotonic approach toward unity as the measure concentrates on the slow manifold shows that the approximation is controlled in the strongly anisotropic regime and deteriorates only as the distribution becomes isotropic.

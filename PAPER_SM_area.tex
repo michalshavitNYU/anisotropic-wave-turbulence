@@ -1,0 +1,24 @@
+% Supplemental Material: numerical evaluation of <A2D> and <A3D>.
+\subsection{Averaged triangle areas $\obs{A_{2D}}$ and $\obs{A_{3D}}$}
+
+We parametrize the resonant triad in the kinematic box. Fixing $\abs{\mathbf{k}_\alpha}=1$ with $\rho_\alpha=\sqrt{1-(k_\alpha^z)^2}$, the transverse magnitudes of the partner legs are $\rho_\beta=\rho_\alpha(u+v)$ and $\rho_\gamma=\rho_\alpha(u-v)$, with $u\in(\tfrac12,\infty)$, $v\in(-\tfrac12,\tfrac12)$. Performing the azimuthal integrations against the transverse momentum delta function gives the Jacobian $1/(2A_{2D})$, so that for the family $e_k\propto k^{-3}\abs{\cos\theta_k}^{-a}$,
+\begin{align}
+    \obs{A_{2D}}_{\beta\gamma} &= C_0^2\,\rho_\alpha^4 \!\int\! \dd u\, \dd v\, \dd k_\beta^z\, (u+v)(u-v)\, \abs{k_\beta^z}^{-a}\abs{k_\alpha^z+k_\beta^z}^{-a}\nonumber\\
+    &\times \leri{\rho_\alpha^2(u+v)^2+{k_\beta^z}^2}^{-\frac{3-a}{2}}\!\leri{\rho_\alpha^2(u-v)^2+(k_\alpha^z+k_\beta^z)^2}^{-\frac{3-a}{2}},
+\end{align}
+and $\obs{A_{3D}}_{\beta\gamma}$ carries an additional factor $A_{3D}/A_{2D}$ with
+\begin{align}
+    A_{2D} &= \frac{\rho_\alpha^2}{4}\sqrt{(1-4v^2)(4u^2-1)}\,,\\
+    A_{3D} &= \frac14\Big[\,4\leri{\rho_\alpha^2(u+v)^2+{k_\beta^z}^2}\leri{\rho_\alpha^2(u-v)^2+(k_\alpha^z+k_\beta^z)^2}\nonumber\\
+    &\ -\leri{\rho_\alpha^2(2u^2+2v^2-1)-{k_\alpha^z}^2+{k_\beta^z}^2+(k_\alpha^z+k_\beta^z)^2}^2\Big]^{1/2}.
+\end{align}
+The $-{k_\alpha^z}^2$ term in $A_{3D}$ follows from $k_\alpha^2=\rho_\alpha^2+{k_\alpha^z}^2$. Averaging over the remaining leg with the spectral weight $e_\alpha\propto(k_\alpha^z)^{-a}$ (at $\abs{\mathbf{k}_\alpha}=1$),
+\begin{align}\label{eq:ratio-of-averages}
+    \frac{\obs{A_{3D}}}{\obs{A_{2D}}} = \frac{\displaystyle\int_0^1 \obs{A_{3D}}_{\beta\gamma}\,(k_\alpha^z)^{-a}\,\dd k_\alpha^z}{\displaystyle\int_0^1 \obs{A_{2D}}_{\beta\gamma}\,(k_\alpha^z)^{-a}\,\dd k_\alpha^z}\,.
+\end{align}
+
+We evaluate Eq.~\eqref{eq:ratio-of-averages} by deterministic quadrature. The integrable $A_{2D}\to0$ edge singularities are removed analytically through the factorization of $A_{2D}$ above and the substitutions $v=\tfrac12\sin\phi$, $u=\tfrac12\cosh t$ (in $\obs{A_{3D}}_{\beta\gamma}$ the factor $1/A_{2D}$ then cancels the Jacobian), and the $\abs{k_z}^{-a}$ branch points are removed by matched substitutions of $k_\beta^z$. The result converges to six significant figures and is independent of the box regulators $(h,d)$, whose imposition reproduces it as $h,d\to\infty$ (Fig.~\ref{fig:convergence}). We obtain
+\begin{align}
+    \frac{\obs{A_{3D}}}{\obs{A_{2D}}} = \begin{cases} 2 & a=0 \ (\text{isotropic}),\\[2pt] 1.311 & a=\tfrac12 \ (\text{odd waves}),\end{cases}
+\end{align}
+with a monotonic decrease across the family in between. The isotropic value is exact: for a uniformly-oriented triad normal $\obs{A_{3D}}/\obs{A_{2D}}=1/\obs{\abs{\cos\psi}}=2$, independent of the radial spectrum. The angle-resolved ratio $R(k_\alpha^z)=\obs{A_{3D}}_{\beta\gamma}/\obs{A_{2D}}_{\beta\gamma}$ increases monotonically from its slow-mode limit ($R\to1$ for odd waves, $R\to\pi/2$ for the isotropic distribution) toward larger values at $k_\alpha^z\to1$ (Fig.~\ref{fig:Rprofile}), confirming that the approximation is best where the spectrum is supported.
