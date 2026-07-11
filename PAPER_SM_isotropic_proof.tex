@@ -1,0 +1,47 @@
+% Isotropic limit of the area ratio: proof that <A3D>/<A2D> = 2.
+\subsection{Isotropic limit: $\obs{A_{3D}}/\obs{A_{2D}}=2$}
+
+Consider a triad $\mathbf{k}_\alpha+\mathbf{k}_\beta+\mathbf{k}_\gamma=\mathbf{0}$ drawn from an
+isotropic measure
+\begin{align}
+    \dd\mu = e(|\mathbf{k}_\alpha|)\,e(|\mathbf{k}_\beta|)\,e(|\mathbf{k}_\gamma|)\,
+    \delta^3\!\leri{\mathbf{k}_\alpha+\mathbf{k}_\beta+\mathbf{k}_\gamma}\,
+    \dd^3k_\alpha\,\dd^3k_\beta\,\dd^3k_\gamma\,,
+\end{align}
+with $e$ depending only on the wavenumber magnitude. Let $\mathbf{w}\equiv\mathbf{k}_\alpha\times\mathbf{k}_\beta$ denote the triad normal. The triangle area and the area of its projection onto the plane $k_z=0$ are
+\begin{align}
+    A_{3D}=\tfrac12|\mathbf{w}|\,,\qquad
+    A_{2D}=\tfrac12|w_z|=\tfrac12|\mathbf{w}|\,|\hat{\mathbf{w}}\cdot\hat{\mathbf z}|\,,
+\end{align}
+so that, the common normalization cancelling,
+\begin{align}\label{eq:iso-ratio-w}
+    \frac{\obs{A_{3D}}}{\obs{A_{2D}}}=\frac{\obs{|\mathbf{w}|}}{\obs{|w_z|}}\,.
+\end{align}
+
+\paragraph{Lemma (uniform orientation of the normal).}
+For any function $h$ on the unit sphere,
+\begin{align}\label{eq:lemma}
+    \obs{|\mathbf{w}|\,h(\hat{\mathbf{w}})} = \obs{|\mathbf{w}|}\,\obs{h}_{S^2}\,,
+    \qquad \obs{h}_{S^2}\equiv\frac{1}{4\pi}\int_{S^2} h\,\dd\Omega\,.
+\end{align}
+\emph{Proof.} Define a measure $\nu$ on $S^2$ by $\nu(B)=\obs{|\mathbf{w}|\,\mathbf{1}[\hat{\mathbf{w}}\in B]}$. Under a global rotation $\mathbf{k}_i\mapsto\mathcal{R}\mathbf{k}_i$ the measure $\dd\mu$ is invariant---$e$ is isotropic, and both $\delta^3$ and the volume element are rotation invariant---while $\mathbf{w}\mapsto\mathcal{R}\mathbf{w}$, so that $|\mathbf{w}|$ is unchanged and $\hat{\mathbf{w}}\mapsto\mathcal{R}\hat{\mathbf{w}}$. Hence $\nu(\mathcal{R}B)=\nu(B)$ for every rotation $\mathcal{R}$: $\nu$ is a finite rotation-invariant measure on $S^2$ and is therefore a multiple of the uniform measure. Since $\nu(S^2)=\obs{|\mathbf{w}|}$, we have $\nu=\obs{|\mathbf{w}|}\,U$ with $U$ the normalized uniform measure, which is Eq.~\eqref{eq:lemma}. $\hfill\square$
+
+The lemma uses only rotation invariance of $\dd\mu$, and thus holds for \emph{any} isotropic $e$, independent of its radial profile.
+
+\paragraph{Conclusion.}
+Applying Eq.~\eqref{eq:lemma} with $h(\hat{\mathbf{w}})=|\hat{\mathbf{w}}\cdot\hat{\mathbf z}|=|\cos\psi|$,
+\begin{align}
+    \obs{|w_z|}=\obs{|\mathbf{w}|\,|\cos\psi|}=\obs{|\mathbf{w}|}\,\obs{|\cos\psi|}_{S^2}\,,
+\end{align}
+where $\psi$ is the angle between the triad normal and $\hat{\mathbf z}$. The uniform-sphere average is
+\begin{align}
+    \obs{|\cos\psi|}_{S^2}
+    =\frac12\int_0^{\pi}|\cos\psi|\sin\psi\,\dd\psi
+    =\int_0^{\pi/2}\cos\psi\sin\psi\,\dd\psi=\frac12\,.
+\end{align}
+Substituting into Eq.~\eqref{eq:iso-ratio-w},
+\begin{align}
+    \boxed{\;\frac{\obs{A_{3D}}}{\obs{A_{2D}}}
+    =\frac{1}{\obs{|\cos\psi|}_{S^2}}=2\;}
+\end{align}
+independent of the radial spectrum $e(|\mathbf{k}|)$. Physically, this is the projected-area law $A_{2D}=A_{3D}|\cos\psi|$ together with the decoupling, enforced by isotropy, of the triangle's shape (which sets $|\mathbf{w}|$) from its orientation ($\hat{\mathbf{w}}$, uniformly distributed on $S^2$).
