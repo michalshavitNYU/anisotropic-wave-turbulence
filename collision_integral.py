@@ -84,10 +84,12 @@ def _roots(z, rb, rg, sb, sg, Xm, ngrid=400):
     return out
 
 
-def St(z, nt=48, nph=48, Tmax=7.0, eps=0.0, f=F, w=W, branches=None):
+def St(z, nt=48, nph=48, Tmax=7.0, eps=0.0, f=F, w=W, branches=None, heps=0.0):
     """Return (St_exact, St_approx) at k_alpha^z = z, |k_alpha|=1.
 
     eps > 0 applies a smooth slow-mode regulator to |k_z|^{-f} on all three legs.
+    heps > 0 applies a HARD slow-mode regulator: contributions with |k_beta^z| < heps
+      or |k_gamma^z| < heps are dropped (spectrum left unregulated, use eps=0).
     f = angular exponent (|cos theta|^{-f}), w = radial exponent.
     branches = list of (s_beta, s_gamma) pairs to include (s_alpha = SA = +1 fixed).
       default = all four; positive branch = [(+1.0, +1.0)].
@@ -112,6 +114,8 @@ def St(z, nt=48, nph=48, Tmax=7.0, eps=0.0, f=F, w=W, branches=None):
             for sb, sg in branches:
                     for x in _roots(z, rb, rg, sb, sg, Xm):
                         kb = np.hypot(rb, x); kgz = -(z + x); kg = np.hypot(rg, kgz)
+                        if heps > 0.0 and (abs(x) < heps or abs(kgz) < heps):
+                            continue
                         a3s = 4 * kb ** 2 * kg ** 2 - (kb ** 2 + kg ** 2 - 1.0) ** 2
                         if a3s <= 0:
                             continue
